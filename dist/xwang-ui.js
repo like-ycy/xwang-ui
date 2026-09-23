@@ -9,7 +9,7 @@ import * as a from "@radix-ui/react-dropdown-menu";
 import * as k from "@radix-ui/react-label";
 import * as d from "@radix-ui/react-popover";
 import * as p from "@radix-ui/react-progress";
-import * as s from "@radix-ui/react-select";
+import * as i from "@radix-ui/react-select";
 import * as b from "@radix-ui/react-switch";
 import * as u from "@radix-ui/react-tabs";
 function o(...e) {
@@ -61,11 +61,11 @@ const z = g(
     }
   }
 );
-function V({ className: e, variant: t, size: n, type: i = "button", ...h }) {
+function V({ className: e, variant: t, size: n, type: s = "button", ...h }) {
   return /* @__PURE__ */ r(
     "button",
     {
-      type: i,
+      type: s,
       className: o(z({ variant: t, size: n, className: e })),
       ...h
     }
@@ -163,7 +163,8 @@ function T({ className: e, ...t }) {
 function q({
   className: e,
   children: t,
-  ...n
+  showClose: n = !1,
+  ...s
 }) {
   return /* @__PURE__ */ l(P, { children: [
     /* @__PURE__ */ r(T, {}),
@@ -175,10 +176,10 @@ function q({
           "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[420px] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-dialog border border-border bg-surface p-6 shadow-dialog",
           e
         ),
-        ...n,
+        ...s,
         children: [
           t,
-          /* @__PURE__ */ l(c.Close, { className: "absolute top-4 right-4 rounded-control p-1 text-faint opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55", children: [
+          n && /* @__PURE__ */ l(c.Close, { className: "absolute top-4 right-4 rounded-control p-1 text-faint opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55", children: [
             /* @__PURE__ */ r(y, { className: "size-4" }),
             /* @__PURE__ */ r("span", { className: "sr-only", children: "关闭" })
           ] })
@@ -228,7 +229,7 @@ function ne({
   className: e,
   inset: t,
   children: n,
-  ...i
+  ...s
 }) {
   return /* @__PURE__ */ l(
     a.SubTrigger,
@@ -239,7 +240,7 @@ function ne({
         t && "pl-8",
         e
       ),
-      ...i,
+      ...s,
       children: [
         n,
         /* @__PURE__ */ r(C, { className: "ml-auto size-4" })
@@ -283,7 +284,7 @@ function ie({
   className: e,
   inset: t,
   variant: n = "default",
-  ...i
+  ...s
 }) {
   return /* @__PURE__ */ r(
     a.Item,
@@ -296,7 +297,7 @@ function ie({
         t && "pl-8",
         e
       ),
-      ...i
+      ...s
     }
   );
 }
@@ -304,7 +305,7 @@ function le({
   className: e,
   children: t,
   checked: n,
-  ...i
+  ...s
 }) {
   return /* @__PURE__ */ l(
     a.CheckboxItem,
@@ -315,7 +316,7 @@ function le({
         e
       ),
       checked: n,
-      ...i,
+      ...s,
       children: [
         /* @__PURE__ */ r("span", { className: "absolute left-2 flex size-3.5 items-center justify-center", children: /* @__PURE__ */ r(a.ItemIndicator, { children: /* @__PURE__ */ r(f, { className: "size-4 text-primary" }) }) }),
         t
@@ -412,7 +413,7 @@ function he({
   className: e,
   align: t = "center",
   sideOffset: n = 4,
-  ...i
+  ...s
 }) {
   return /* @__PURE__ */ r(d.Portal, { children: /* @__PURE__ */ r(
     d.Content,
@@ -423,7 +424,7 @@ function he({
         "z-50 w-72 rounded-card border border-border bg-surface p-4 text-foreground shadow-dialog outline-none",
         e
       ),
-      ...i
+      ...s
     }
   ) });
 }
@@ -431,17 +432,18 @@ function ve({
   className: e,
   value: t,
   indicatorClassName: n,
-  ...i
+  ...s
 }) {
   return /* @__PURE__ */ r(
     p.Root,
     {
       "data-slot": "progress",
+      value: t,
       className: o(
         "relative h-2 w-full overflow-hidden rounded-full bg-surface-2",
         e
       ),
-      ...i,
+      ...s,
       children: /* @__PURE__ */ r(
         p.Indicator,
         {
@@ -452,14 +454,14 @@ function ve({
     }
   );
 }
-const we = s.Root, ye = s.Group, Ne = s.Value;
+const we = i.Root, ye = i.Group, Ne = i.Value;
 function Ce({
   className: e,
   children: t,
   ...n
 }) {
   return /* @__PURE__ */ l(
-    s.Trigger,
+    i.Trigger,
     {
       "data-slot": "select-trigger",
       className: o(
@@ -473,7 +475,7 @@ function Ce({
       ...n,
       children: [
         t,
-        /* @__PURE__ */ r(s.Icon, { asChild: !0, children: /* @__PURE__ */ r(x, { className: "size-4 text-faint opacity-70" }) })
+        /* @__PURE__ */ r(i.Icon, { asChild: !0, children: /* @__PURE__ */ r(x, { className: "size-4 text-faint opacity-70" }) })
       ]
     }
   );
@@ -482,10 +484,10 @@ function De({
   className: e,
   children: t,
   position: n = "popper",
-  ...i
+  ...s
 }) {
-  return /* @__PURE__ */ r(s.Portal, { children: /* @__PURE__ */ l(
-    s.Content,
+  return /* @__PURE__ */ r(i.Portal, { children: /* @__PURE__ */ l(
+    i.Content,
     {
       className: o(
         "relative z-50 max-h-72 min-w-[8rem] overflow-hidden rounded-card border border-border bg-surface text-foreground shadow-dialog",
@@ -493,11 +495,11 @@ function De({
         e
       ),
       position: n,
-      ...i,
+      ...s,
       children: [
-        /* @__PURE__ */ r(s.ScrollUpButton, { className: "flex h-6 items-center justify-center bg-surface", children: /* @__PURE__ */ r(D, { className: "size-4" }) }),
+        /* @__PURE__ */ r(i.ScrollUpButton, { className: "flex h-6 items-center justify-center bg-surface", children: /* @__PURE__ */ r(D, { className: "size-4" }) }),
         /* @__PURE__ */ r(
-          s.Viewport,
+          i.Viewport,
           {
             className: o(
               "p-1",
@@ -506,14 +508,14 @@ function De({
             children: t
           }
         ),
-        /* @__PURE__ */ r(s.ScrollDownButton, { className: "flex h-6 items-center justify-center bg-surface", children: /* @__PURE__ */ r(x, { className: "size-4" }) })
+        /* @__PURE__ */ r(i.ScrollDownButton, { className: "flex h-6 items-center justify-center bg-surface", children: /* @__PURE__ */ r(x, { className: "size-4" }) })
       ]
     }
   ) });
 }
 function ke({ className: e, ...t }) {
   return /* @__PURE__ */ r(
-    s.Label,
+    i.Label,
     {
       className: o("px-2 py-1.5 text-xs font-semibold text-faint", e),
       ...t
@@ -526,7 +528,7 @@ function Se({
   ...n
 }) {
   return /* @__PURE__ */ l(
-    s.Item,
+    i.Item,
     {
       className: o(
         "relative flex w-full cursor-default items-center gap-2 rounded-control py-1.5 pr-8 pl-2 text-sm outline-none select-none",
@@ -535,8 +537,8 @@ function Se({
       ),
       ...n,
       children: [
-        /* @__PURE__ */ r("span", { className: "absolute right-2 flex size-3.5 items-center justify-center", children: /* @__PURE__ */ r(s.ItemIndicator, { children: /* @__PURE__ */ r(f, { className: "size-4 text-primary" }) }) }),
-        /* @__PURE__ */ r(s.ItemText, { children: t })
+        /* @__PURE__ */ r("span", { className: "absolute right-2 flex size-3.5 items-center justify-center", children: /* @__PURE__ */ r(i.ItemIndicator, { children: /* @__PURE__ */ r(f, { className: "size-4 text-primary" }) }) }),
+        /* @__PURE__ */ r(i.ItemText, { children: t })
       ]
     }
   );
@@ -546,7 +548,7 @@ function ze({
   ...t
 }) {
   return /* @__PURE__ */ r(
-    s.Separator,
+    i.Separator,
     {
       className: o("-mx-1 my-1 h-px bg-border", e),
       ...t
