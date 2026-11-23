@@ -1,0 +1,58 @@
+/*
+ * xwang-ui 元素级基线。
+ *
+ * 只放「所有应用都必须一致、且不属于任何组件」的规则：
+ * 文档底色与排版、滚动条、选区、原生控件的 color-scheme。
+ *
+ * 不依赖 Tailwind，纯 HTML / Wails 手写页面也能直接引入。
+ * 注意：这里不写任何类名选择器，避免和业务样式争优先级。
+ */
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-size: 14px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-primary-soft);
+    color: var(--color-primary-active);
+  }
+
+  /* 桌面端统一细滚动条；WKWebView / Chromium 都走这套 */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border-strong);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-faint);
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: transparent;
+  }
+}

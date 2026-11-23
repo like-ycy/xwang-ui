@@ -1,0 +1,227 @@
+/*
+ * 预览站自身样式。刻意不用任何 Tailwind 工具类，
+ * 全部走 tokens 变量 —— 顺便验证 token 层脱离 Tailwind 也能独立工作。
+ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  padding-bottom: 80px;
+}
+
+.page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 56px;
+  padding: 0 28px;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.topbar .spacer {
+  flex: 1;
+}
+
+.seg {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-control);
+}
+
+.seg button {
+  height: var(--control-h-sm);
+  padding: 0 10px;
+  border: 0;
+  border-radius: calc(var(--radius-control) - 1px);
+  background: transparent;
+  color: var(--color-muted);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background var(--duration-fast) var(--ease-standard), color var(--duration-fast) var(--ease-standard);
+}
+
+.seg button[aria-pressed="true"] {
+  background: var(--color-surface);
+  color: var(--color-foreground);
+  box-shadow: var(--shadow-card);
+}
+
+section {
+  margin-top: 40px;
+}
+
+.sec-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 4px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.sec-note {
+  margin: 0 0 16px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.grid {
+  display: grid;
+  gap: 12px;
+}
+
+.grid.cols-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid.cols-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid.cols-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.panel {
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}
+
+.panel.flat {
+  box-shadow: none;
+}
+
+.panel-label {
+  margin: 0 0 12px;
+  color: var(--color-faint);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.row + .row {
+  margin-top: 14px;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.swatch {
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-surface);
+}
+
+.swatch .chip {
+  height: 56px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.swatch .meta {
+  padding: 8px 10px;
+}
+
+.swatch .name {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-foreground);
+  word-break: break-all;
+}
+
+.swatch .value {
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--color-faint);
+}
+
+.tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  background: var(--color-surface-2);
+  border-radius: var(--radius-card);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-muted);
+}
+
+.issues {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--color-muted);
+  font-size: 13px;
+}
+
+.issues li + li {
+  margin-top: 8px;
+}
+
+.issues code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--color-danger);
+}
+
+.divider {
+  height: 1px;
+  margin: 20px 0;
+  background: var(--color-border);
+}

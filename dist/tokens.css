@@ -1,0 +1,115 @@
+/*
+ * xwang-ui design tokens — 颜色、圆角、阴影、字体的唯一来源。
+ *
+ * 这个文件不依赖 Tailwind，是纯 CSS 自定义属性，任何技术栈都能直接引入：
+ *   React + Tailwind : @import "xwang-ui/styles.css"（内部已包含本文件）
+ *   纯 HTML / Wails  : <link rel="stylesheet" href="xwang-ui/tokens.css">
+ *
+ * 约定：只在这里改取值。组件与业务样式一律引用变量，不写死颜色或尺寸。
+ */
+
+:root {
+  color-scheme: light;
+
+  /* 底色与表面 */
+  --color-background: #f7f8fa;
+  --color-surface: #ffffff;
+  --color-surface-2: #f2f3f5;
+  --color-surface-3: #e5e6eb;
+
+  /* 遮罩（弹窗 / 抽屉背后的压暗层） */
+  --color-overlay: rgb(29 33 41 / 48%);
+
+  /* 文字 */
+  --color-foreground: #1d2129;
+  --color-muted: #4e5969;
+  --color-faint: #86909c;
+
+  /* 描边 */
+  --color-border: #e5e6eb;
+  --color-border-strong: #c9cdd4;
+
+  /* 主色 */
+  --color-primary: #165dff;
+  --color-primary-hover: #4080ff;
+  --color-primary-active: #0e42d2;
+  --color-primary-soft: #e8f3ff;
+  --color-on-primary: #ffffff;
+
+  /* 语义色 */
+  --color-success: #00b42a;
+  --color-success-soft: #e8ffea;
+  --color-warning: #ff7d00;
+  --color-warning-soft: #fff7e8;
+  --color-danger: #f53f3f;
+  --color-danger-soft: #ffece8;
+  --color-info: #0e42d2;
+  --color-info-soft: #e8f3ff;
+
+  /* 圆角阶梯 */
+  --radius-control: 6px;
+  --radius-card: 8px;
+  --radius-panel: 10px;
+  --radius-dialog: 12px;
+  --radius-pill: 999px;
+
+  /* 阴影阶梯 */
+  --shadow-card: 0 1px 2px rgb(29 33 41 / 4%), 0 6px 18px rgb(29 33 41 / 5%);
+  --shadow-dialog: 0 18px 48px rgb(29 33 41 / 22%);
+
+  /* 字体 */
+  --font-sans: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", Consolas, monospace;
+
+  /* 控件高度阶梯（与 .control-h* 类同源） */
+  --control-h-sm: 28px;
+  --control-h: 32px;
+  --control-h-lg: 40px;
+
+  /* 动效（新增：当前组件尚未使用，供后续精修统一取值） */
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 280ms;
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* 焦点环（新增：同上，供各组件统一引用） */
+  --ring-width: 2px;
+  --ring-offset: 1px;
+}
+
+.dark {
+  color-scheme: dark;
+
+  --color-background: #0b0d10;
+  --color-surface: #151a22;
+  --color-surface-2: #1d2633;
+  --color-surface-3: #263241;
+
+  --color-overlay: rgb(0 0 0 / 64%);
+
+  --color-foreground: #f2f3f5;
+  --color-muted: #c9cdd4;
+  --color-faint: #86909c;
+
+  --color-border: #2a3441;
+  --color-border-strong: #3b4756;
+
+  --color-primary: #4080ff;
+  --color-primary-hover: #6aa1ff;
+  --color-primary-active: #165dff;
+  --color-primary-soft: #172c4a;
+  --color-on-primary: #ffffff;
+
+  --color-success: #23c343;
+  --color-success-soft: #12351f;
+  --color-warning: #ffaa2c;
+  --color-warning-soft: #3a2914;
+  --color-danger: #f76969;
+  --color-danger-soft: #3b1e20;
+  --color-info: #4080ff;
+  --color-info-soft: #172c4a;
+
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 30%), 0 6px 18px rgb(0 0 0 / 18%);
+  --shadow-dialog: 0 18px 48px rgb(0 0 0 / 55%);
+}

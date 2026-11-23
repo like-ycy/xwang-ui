@@ -1,6 +1,6 @@
 {
   "name": "xwang-ui",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Shared React UI components and design tokens for Xwang desktop apps",
   "type": "module",
   "files": ["dist"],
@@ -13,10 +13,12 @@
       "import": "./dist/xwang-ui.js"
     },
     "./styles.css": "./dist/styles.css",
-    "./tokens.css": "./dist/styles.css"
+    "./tokens.css": "./dist/tokens.css",
+    "./base.css": "./dist/base.css"
   },
   "scripts": {
-    "build": "vite build && tsc --emitDeclarationOnly",
+    "build": "vite build && tsc --emitDeclarationOnly && node scripts/copy-css.mjs",
+    "dev": "vite --config vite.preview.config.ts",
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
