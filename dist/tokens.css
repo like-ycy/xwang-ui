@@ -60,7 +60,7 @@
 
   /* 字体 */
   --font-sans: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", Consolas, monospace;
+  --font-mono: "JetBrains Mono", Consolas, ui-monospace, monospace;
 
   /* 控件高度阶梯（与 .control-h* 类同源） */
   --control-h-sm: 28px;
