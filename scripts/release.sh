@@ -58,7 +58,7 @@ git push origin "$VERSION"
 
 cat <<EOF
 
-已发布 $VERSION。三个下游逐个执行（必须先删已安装的副本，否则 lock 会沿用旧 commit）：
+已发布 ${VERSION}。三个下游逐个执行（必须先删已安装的副本，否则 lock 会沿用旧 commit）：
 
   cd media-dedupe/frontend      # video_cut/frontend、video_library/go/frontend 同理
   # 改 package.json 里的 #tag
