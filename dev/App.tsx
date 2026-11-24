@@ -468,7 +468,8 @@ export function App() {
                 video_cut 的滚动条与遮罩覆盖已删除，滚动条统一由 <code>base.css</code> 提供。
               </li>
               <li>
-                video_library 的兼容别名层删掉 13 个无人引用的变量，其余标注 deprecated，按页面分批替换。
+                video_library 的兼容别名层已整体删除（141 处引用分批替换成公共包变量），
+                颜色 / 圆角 / 阴影 / 字体只剩公共包一处来源。
               </li>
             </ul>
           </div>
@@ -492,8 +493,12 @@ export function App() {
                 Card 新增 <code>interactive</code> 变体（默认不动），配套新增 <code>--shadow-card-hover</code>。
               </li>
               <li>
-                表格默认 <code>tabular-nums</code>，<code>--ring-width</code> / <code>--ring-offset</code>
-                这两个没人引用的半成品 token 已删除。
+                表格默认 <code>tabular-nums</code>，<code>--ring-width</code> /{" "}<code>--ring-offset</code>
+                {" "}这两个没人引用的半成品 token 已删除。
+              </li>
+              <li>
+                <code>SelectTrigger</code> 新增 <code>bare</code> 变体；video_library 的标题栏三处无层 hack
+                与整层兼容别名已删除，取值只剩公共包一处。
               </li>
             </ul>
           </div>
@@ -510,7 +515,8 @@ export function App() {
                 待单独一轮迁移。
               </li>
               <li>
-                video_library 的兼容别名层还有约 212 处引用，按页面分批替换后整块删除。
+                media-dedupe 与 video_cut 的 <code>style.css</code> 仍是「tailwindcss 在前、公共包在后」的引入顺序，
+                业务侧要用 className 覆盖组件 utility 时会失效（video_library 已调整）。
               </li>
             </ul>
           </div>
