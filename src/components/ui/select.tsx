@@ -1,4 +1,5 @@
 import * as SelectPrimitive from "@radix-ui/react-select"
+import { cva, type VariantProps } from "class-variance-authority"
 import { Check, ChevronDown, ChevronUp } from "lucide-react"
 import * as React from "react"
 import { cn } from "../../lib/utils"
@@ -7,22 +8,40 @@ const Select = SelectPrimitive.Root
 const SelectGroup = SelectPrimitive.Group
 const SelectValue = SelectPrimitive.Value
 
+/*
+ * 外观分两档：
+ * - default：独立使用的标准触发器。
+ * - bare：嵌在业务自绘容器里的裸触发器，边框 / 背景 / 高度 / 宽度全部交给外层，
+ *   用于「图标 + 下拉」这种组合控件（如 video_library 的库选择器）。
+ *
+ * 聚焦环与展开态也放在 variant 里，而不是统一写在 className 里：
+ * 后写的 className 会覆盖先写的同类 utility（tailwind-merge 保留后者），
+ * 写在基础类里的话 bare 的 ring-0 会被基础类的 ring-2 顶掉。
+ */
+const triggerVariants = cva(
+  "flex items-center justify-between gap-2 rounded-control border text-sm transition-[border-color,box-shadow] duration-base ease-standard placeholder:text-faint disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
+  {
+    variants: {
+      variant: {
+        default:
+          "control-h w-full border-border-strong bg-surface px-2.5 shadow-xs focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20 data-[state=open]:border-primary",
+        bare: "h-auto w-auto min-w-0 flex-1 border-0 bg-transparent p-0 shadow-none focus-visible:outline-none data-[state=open]:border-0",
+      },
+    },
+    defaultVariants: { variant: "default" },
+  }
+)
+
 function SelectTrigger({
   className,
+  variant,
   children,
   ...props
-}: React.ComponentProps<typeof SelectPrimitive.Trigger>) {
+}: React.ComponentProps<typeof SelectPrimitive.Trigger> & VariantProps<typeof triggerVariants>) {
   return (
     <SelectPrimitive.Trigger
       data-slot="select-trigger"
-      className={cn(
-        "control-h flex w-full items-center justify-between gap-2 rounded-control border border-border-strong bg-surface px-2.5 text-sm shadow-xs transition-[border-color,box-shadow] duration-base ease-standard",
-        "placeholder:text-faint",
-        "focus-visible:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/20",
-        "disabled:cursor-not-allowed disabled:opacity-50",
-        "data-[state=open]:border-primary [&>span]:line-clamp-1",
-        className
-      )}
+      className={cn(triggerVariants({ variant }), className)}
       {...props}
     >
       {children}

@@ -301,6 +301,31 @@ export function App() {
                   </SelectContent>
                 </Select>
               </div>
+              <div className="field">
+                <Label>裸触发器（variant="bare"）</Label>
+                {/* 外观完全交给外层容器，用于「图标 + 下拉」这类组合控件 */}
+                <div
+                  className="flex items-center gap-1.5"
+                  style={{
+                    height: 28,
+                    padding: "0 8px",
+                    border: "1px solid var(--color-border-strong)",
+                    borderRadius: "var(--radius-control)",
+                    background: "var(--color-surface)",
+                  }}
+                >
+                  <span className="text-xs text-faint">库</span>
+                  <Select defaultValue="a">
+                    <SelectTrigger variant="bare" aria-label="裸触发器示例">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="a">/media/anime</SelectItem>
+                      <SelectItem value="b">/media/movies</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
             </div>
 
             <div className="panel stack">
