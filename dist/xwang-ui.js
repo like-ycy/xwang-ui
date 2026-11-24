@@ -1,13 +1,13 @@
-import { jsx as r, jsxs as l } from "react/jsx-runtime";
+import { jsx as r, jsxs as d } from "react/jsx-runtime";
 import { cva as g } from "class-variance-authority";
 import { clsx as v } from "clsx";
 import { twMerge as y } from "tailwind-merge";
 import * as m from "@radix-ui/react-checkbox";
 import { Check as f, X as w, Circle as N, ChevronRight as C, ChevronUp as D, ChevronDown as x } from "lucide-react";
-import * as c from "@radix-ui/react-dialog";
-import * as a from "@radix-ui/react-dropdown-menu";
-import * as k from "@radix-ui/react-label";
-import * as d from "@radix-ui/react-popover";
+import * as l from "@radix-ui/react-dialog";
+import * as n from "@radix-ui/react-dropdown-menu";
+import * as z from "@radix-ui/react-label";
+import * as c from "@radix-ui/react-popover";
 import * as p from "@radix-ui/react-progress";
 import * as i from "@radix-ui/react-select";
 import * as b from "@radix-ui/react-switch";
@@ -15,7 +15,7 @@ import * as u from "@radix-ui/react-tabs";
 function o(...e) {
   return y(v(e));
 }
-const S = g(
+const k = g(
   "inline-flex h-[22px] items-center rounded-control border border-transparent px-2 text-xs font-medium whitespace-nowrap",
   {
     variants: {
@@ -33,10 +33,10 @@ const S = g(
     }
   }
 );
-function V({ className: e, variant: t, ...n }) {
-  return /* @__PURE__ */ r("span", { className: o(S({ variant: t }), e), ...n });
+function V({ className: e, variant: t, ...a }) {
+  return /* @__PURE__ */ r("span", { className: o(k({ variant: t }), e), ...a });
 }
-const z = g(
+const S = g(
   "inline-flex items-center justify-center gap-1.5 whitespace-nowrap rounded-control font-semibold transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55 focus-visible:ring-offset-1 focus-visible:ring-offset-background disabled:pointer-events-none disabled:opacity-45 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
@@ -61,12 +61,12 @@ const z = g(
     }
   }
 );
-function _({ className: e, variant: t, size: n, type: s = "button", ...h }) {
+function _({ className: e, variant: t, size: a, type: s = "button", ...h }) {
   return /* @__PURE__ */ r(
     "button",
     {
       type: s,
-      className: o(z({ variant: t, size: n, className: e })),
+      className: o(S({ variant: t, size: a, className: e })),
       ...h
     }
   );
@@ -146,10 +146,10 @@ function U({ className: e, ...t }) {
     }
   );
 }
-const X = c.Root, W = c.Trigger, P = c.Portal, $ = c.Close;
+const X = l.Root, W = l.Trigger, P = l.Portal, $ = l.Close;
 function T({ className: e, ...t }) {
   return /* @__PURE__ */ r(
-    c.Overlay,
+    l.Overlay,
     {
       "data-slot": "dialog-overlay",
       className: o(
@@ -163,23 +163,25 @@ function T({ className: e, ...t }) {
 function q({
   className: e,
   children: t,
-  showClose: n = !1,
+  showClose: a = !1,
   ...s
 }) {
-  return /* @__PURE__ */ l(P, { children: [
+  return /* @__PURE__ */ d(P, { children: [
     /* @__PURE__ */ r(T, {}),
-    /* @__PURE__ */ l(
-      c.Content,
+    /* @__PURE__ */ d(
+      l.Content,
       {
         "data-slot": "dialog-content",
         className: o(
           "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[420px] -translate-x-1/2 -translate-y-1/2 gap-4 rounded-dialog border border-border bg-surface p-6 shadow-dialog",
+          "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+          "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
           e
         ),
         ...s,
         children: [
           t,
-          n && /* @__PURE__ */ l(c.Close, { className: "absolute top-4 right-4 rounded-control p-1 text-faint opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55", children: [
+          a && /* @__PURE__ */ d(l.Close, { className: "absolute top-4 right-4 rounded-control p-1 text-faint opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55", children: [
             /* @__PURE__ */ r(w, { className: "size-4" }),
             /* @__PURE__ */ r("span", { className: "sr-only", children: "关闭" })
           ] })
@@ -203,7 +205,7 @@ function J({ className: e, ...t }) {
 }
 function K({ className: e, ...t }) {
   return /* @__PURE__ */ r(
-    c.Title,
+    l.Title,
     {
       "data-slot": "dialog-title",
       className: o("text-base font-semibold", e),
@@ -216,7 +218,7 @@ function Q({
   ...t
 }) {
   return /* @__PURE__ */ r(
-    c.Description,
+    l.Description,
     {
       "data-slot": "dialog-description",
       className: o("text-sm text-muted", e),
@@ -224,15 +226,15 @@ function Q({
     }
   );
 }
-const Y = a.Root, Z = a.Trigger, ee = a.Group, te = a.Portal, re = a.Sub, oe = a.RadioGroup;
-function ne({
+const Y = n.Root, Z = n.Trigger, ee = n.Group, te = n.Portal, re = n.Sub, oe = n.RadioGroup;
+function ae({
   className: e,
   inset: t,
-  children: n,
+  children: a,
   ...s
 }) {
-  return /* @__PURE__ */ l(
-    a.SubTrigger,
+  return /* @__PURE__ */ d(
+    n.SubTrigger,
     {
       className: o(
         "flex cursor-default items-center gap-2 rounded-control px-2 py-1.5 text-sm outline-none select-none",
@@ -242,21 +244,23 @@ function ne({
       ),
       ...s,
       children: [
-        n,
+        a,
         /* @__PURE__ */ r(C, { className: "ml-auto size-4" })
       ]
     }
   );
 }
-function ae({
+function ne({
   className: e,
   ...t
 }) {
   return /* @__PURE__ */ r(
-    a.SubContent,
+    n.SubContent,
     {
       className: o(
         "z-50 min-w-[8rem] overflow-hidden rounded-card border border-border bg-surface p-1 text-foreground shadow-dialog",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         e
       ),
       ...t
@@ -266,34 +270,36 @@ function ae({
 function se({
   className: e,
   sideOffset: t = 4,
-  ...n
+  ...a
 }) {
-  return /* @__PURE__ */ r(a.Portal, { children: /* @__PURE__ */ r(
-    a.Content,
+  return /* @__PURE__ */ r(n.Portal, { children: /* @__PURE__ */ r(
+    n.Content,
     {
       sideOffset: t,
       className: o(
         "z-50 min-w-[8rem] overflow-hidden rounded-card border border-border bg-surface p-1 text-foreground shadow-dialog",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         e
       ),
-      ...n
+      ...a
     }
   ) });
 }
 function ie({
   className: e,
   inset: t,
-  variant: n = "default",
+  variant: a = "default",
   ...s
 }) {
   return /* @__PURE__ */ r(
-    a.Item,
+    n.Item,
     {
       className: o(
         "relative flex cursor-default items-center gap-2 rounded-control px-2 py-1.5 text-sm outline-none select-none",
         "focus:bg-surface-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg]:text-faint",
-        n === "destructive" && "text-danger focus:bg-danger-soft [&_svg]:text-danger",
+        a === "destructive" && "text-danger focus:bg-danger-soft [&_svg]:text-danger",
         t && "pl-8",
         e
       ),
@@ -301,24 +307,45 @@ function ie({
     }
   );
 }
-function le({
+function de({
   className: e,
   children: t,
-  checked: n,
+  checked: a,
   ...s
 }) {
-  return /* @__PURE__ */ l(
-    a.CheckboxItem,
+  return /* @__PURE__ */ d(
+    n.CheckboxItem,
     {
       className: o(
         "relative flex cursor-default items-center rounded-control py-1.5 pr-2 pl-8 text-sm outline-none select-none",
         "focus:bg-surface-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         e
       ),
-      checked: n,
+      checked: a,
       ...s,
       children: [
-        /* @__PURE__ */ r("span", { className: "absolute left-2 flex size-3.5 items-center justify-center", children: /* @__PURE__ */ r(a.ItemIndicator, { children: /* @__PURE__ */ r(f, { className: "size-4 text-primary" }) }) }),
+        /* @__PURE__ */ r("span", { className: "absolute left-2 flex size-3.5 items-center justify-center", children: /* @__PURE__ */ r(n.ItemIndicator, { children: /* @__PURE__ */ r(f, { className: "size-4 text-primary" }) }) }),
+        t
+      ]
+    }
+  );
+}
+function le({
+  className: e,
+  children: t,
+  ...a
+}) {
+  return /* @__PURE__ */ d(
+    n.RadioItem,
+    {
+      className: o(
+        "relative flex cursor-default items-center rounded-control py-1.5 pr-2 pl-8 text-sm outline-none select-none",
+        "focus:bg-surface-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+        e
+      ),
+      ...a,
+      children: [
+        /* @__PURE__ */ r("span", { className: "absolute left-2 flex size-3.5 items-center justify-center", children: /* @__PURE__ */ r(n.ItemIndicator, { children: /* @__PURE__ */ r(N, { className: "size-2 fill-primary text-primary" }) }) }),
         t
       ]
     }
@@ -326,39 +353,18 @@ function le({
 }
 function ce({
   className: e,
-  children: t,
-  ...n
-}) {
-  return /* @__PURE__ */ l(
-    a.RadioItem,
-    {
-      className: o(
-        "relative flex cursor-default items-center rounded-control py-1.5 pr-2 pl-8 text-sm outline-none select-none",
-        "focus:bg-surface-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-        e
-      ),
-      ...n,
-      children: [
-        /* @__PURE__ */ r("span", { className: "absolute left-2 flex size-3.5 items-center justify-center", children: /* @__PURE__ */ r(a.ItemIndicator, { children: /* @__PURE__ */ r(N, { className: "size-2 fill-primary text-primary" }) }) }),
-        t
-      ]
-    }
-  );
-}
-function de({
-  className: e,
   inset: t,
-  ...n
+  ...a
 }) {
   return /* @__PURE__ */ r(
-    a.Label,
+    n.Label,
     {
       className: o(
         "px-2 py-1.5 text-xs font-semibold text-faint",
         t && "pl-8",
         e
       ),
-      ...n
+      ...a
     }
   );
 }
@@ -367,7 +373,7 @@ function ue({
   ...t
 }) {
   return /* @__PURE__ */ r(
-    a.Separator,
+    n.Separator,
     {
       className: o("-mx-1 my-1 h-px bg-border", e),
       ...t
@@ -377,7 +383,7 @@ function ue({
 function fe({ className: e, ...t }) {
   return /* @__PURE__ */ r("span", { className: o("ml-auto text-xs tracking-widest text-faint", e), ...t });
 }
-function me({ className: e, type: t, ...n }) {
+function me({ className: e, type: t, ...a }) {
   return /* @__PURE__ */ r(
     "input",
     {
@@ -391,13 +397,13 @@ function me({ className: e, type: t, ...n }) {
         "aria-invalid:border-danger aria-invalid:ring-danger/20",
         e
       ),
-      ...n
+      ...a
     }
   );
 }
 function pe({ className: e, ...t }) {
   return /* @__PURE__ */ r(
-    k.Root,
+    z.Root,
     {
       "data-slot": "label",
       className: o(
@@ -408,20 +414,22 @@ function pe({ className: e, ...t }) {
     }
   );
 }
-const be = d.Root, ge = d.Trigger, xe = d.Anchor;
+const be = c.Root, ge = c.Trigger, xe = c.Anchor;
 function he({
   className: e,
   align: t = "center",
-  sideOffset: n = 4,
+  sideOffset: a = 4,
   ...s
 }) {
-  return /* @__PURE__ */ r(d.Portal, { children: /* @__PURE__ */ r(
-    d.Content,
+  return /* @__PURE__ */ r(c.Portal, { children: /* @__PURE__ */ r(
+    c.Content,
     {
       align: t,
-      sideOffset: n,
+      sideOffset: a,
       className: o(
         "z-50 w-72 rounded-card border border-border bg-surface p-4 text-foreground shadow-dialog outline-none",
+        "data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95",
+        "data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-95",
         e
       ),
       ...s
@@ -431,7 +439,7 @@ function he({
 function ve({
   className: e,
   value: t,
-  indicatorClassName: n,
+  indicatorClassName: a,
   ...s
 }) {
   return /* @__PURE__ */ r(
@@ -447,7 +455,7 @@ function ve({
       children: /* @__PURE__ */ r(
         p.Indicator,
         {
-          className: o("h-full w-full flex-1 bg-primary transition-transform", n),
+          className: o("h-full w-full flex-1 bg-primary transition-transform", a),
           style: { transform: `translateX(-${100 - (t || 0)}%)` }
         }
       )
@@ -458,9 +466,9 @@ const ye = i.Root, we = i.Group, Ne = i.Value;
 function Ce({
   className: e,
   children: t,
-  ...n
+  ...a
 }) {
-  return /* @__PURE__ */ l(
+  return /* @__PURE__ */ d(
     i.Trigger,
     {
       "data-slot": "select-trigger",
@@ -472,7 +480,7 @@ function Ce({
         "data-[state=open]:border-primary [&>span]:line-clamp-1",
         e
       ),
-      ...n,
+      ...a,
       children: [
         t,
         /* @__PURE__ */ r(i.Icon, { asChild: !0, children: /* @__PURE__ */ r(x, { className: "size-4 text-faint opacity-70" }) })
@@ -483,18 +491,18 @@ function Ce({
 function De({
   className: e,
   children: t,
-  position: n = "popper",
+  position: a = "popper",
   ...s
 }) {
-  return /* @__PURE__ */ r(i.Portal, { children: /* @__PURE__ */ l(
+  return /* @__PURE__ */ r(i.Portal, { children: /* @__PURE__ */ d(
     i.Content,
     {
       className: o(
         "relative z-50 max-h-72 min-w-[8rem] overflow-hidden rounded-card border border-border bg-surface text-foreground shadow-dialog",
-        n === "popper" && "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
+        a === "popper" && "data-[side=bottom]:translate-y-1 data-[side=top]:-translate-y-1",
         e
       ),
-      position: n,
+      position: a,
       ...s,
       children: [
         /* @__PURE__ */ r(i.ScrollUpButton, { className: "flex h-6 items-center justify-center bg-surface", children: /* @__PURE__ */ r(D, { className: "size-4" }) }),
@@ -503,7 +511,7 @@ function De({
           {
             className: o(
               "p-1",
-              n === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
+              a === "popper" && "h-[var(--radix-select-trigger-height)] w-full min-w-[var(--radix-select-trigger-width)]"
             ),
             children: t
           }
@@ -513,7 +521,7 @@ function De({
     }
   ) });
 }
-function ke({ className: e, ...t }) {
+function ze({ className: e, ...t }) {
   return /* @__PURE__ */ r(
     i.Label,
     {
@@ -522,12 +530,12 @@ function ke({ className: e, ...t }) {
     }
   );
 }
-function Se({
+function ke({
   className: e,
   children: t,
-  ...n
+  ...a
 }) {
-  return /* @__PURE__ */ l(
+  return /* @__PURE__ */ d(
     i.Item,
     {
       className: o(
@@ -535,7 +543,7 @@ function Se({
         "focus:bg-surface-2 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
         e
       ),
-      ...n,
+      ...a,
       children: [
         /* @__PURE__ */ r("span", { className: "absolute right-2 flex size-3.5 items-center justify-center", children: /* @__PURE__ */ r(i.ItemIndicator, { children: /* @__PURE__ */ r(f, { className: "size-4 text-primary" }) }) }),
         /* @__PURE__ */ r(i.ItemText, { children: t })
@@ -543,7 +551,7 @@ function Se({
     }
   );
 }
-function ze({
+function Se({
   className: e,
   ...t
 }) {
@@ -644,19 +652,19 @@ export {
   K as DialogTitle,
   W as DialogTrigger,
   Y as DropdownMenu,
-  le as DropdownMenuCheckboxItem,
+  de as DropdownMenuCheckboxItem,
   se as DropdownMenuContent,
   ee as DropdownMenuGroup,
   ie as DropdownMenuItem,
-  de as DropdownMenuLabel,
+  ce as DropdownMenuLabel,
   te as DropdownMenuPortal,
   oe as DropdownMenuRadioGroup,
-  ce as DropdownMenuRadioItem,
+  le as DropdownMenuRadioItem,
   ue as DropdownMenuSeparator,
   fe as DropdownMenuShortcut,
   re as DropdownMenuSub,
-  ae as DropdownMenuSubContent,
-  ne as DropdownMenuSubTrigger,
+  ne as DropdownMenuSubContent,
+  ae as DropdownMenuSubTrigger,
   Z as DropdownMenuTrigger,
   me as Input,
   pe as Label,
@@ -668,9 +676,9 @@ export {
   ye as Select,
   De as SelectContent,
   we as SelectGroup,
-  Se as SelectItem,
-  ke as SelectLabel,
-  ze as SelectSeparator,
+  ke as SelectItem,
+  ze as SelectLabel,
+  Se as SelectSeparator,
   Ce as SelectTrigger,
   Ne as SelectValue,
   Pe as Switch,
@@ -678,6 +686,6 @@ export {
   je as TabsContent,
   Ie as TabsList,
   Me as TabsTrigger,
-  S as badgeVariants,
-  z as buttonVariants
+  k as badgeVariants,
+  S as buttonVariants
 };

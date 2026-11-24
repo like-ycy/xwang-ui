@@ -33,6 +33,11 @@
     color: var(--color-primary-active);
   }
 
+  /* 表格与预格式化内容默认等宽数字，避免数值刷新时横向跳动 */
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+
   /* 桌面端统一细滚动条；WKWebView / Chromium 都走这套 */
   ::-webkit-scrollbar {
     width: 8px;
