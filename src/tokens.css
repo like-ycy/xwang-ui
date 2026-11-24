@@ -55,6 +55,7 @@
 
   /* 阴影阶梯 */
   --shadow-card: 0 1px 2px rgb(29 33 41 / 4%), 0 6px 18px rgb(29 33 41 / 5%);
+  --shadow-card-hover: 0 2px 4px rgb(29 33 41 / 6%), 0 12px 28px rgb(29 33 41 / 10%);
   --shadow-dialog: 0 18px 48px rgb(29 33 41 / 22%);
 
   /* 字体 */
@@ -66,16 +67,18 @@
   --control-h: 32px;
   --control-h-lg: 40px;
 
-  /* 动效（新增：当前组件尚未使用，供后续精修统一取值） */
+  /* 动效（组件统一通过 duration-* / ease-* 工具类引用，映射见 styles.css） */
   --duration-fast: 120ms;
   --duration-base: 180ms;
   --duration-slow: 280ms;
   --ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* 焦点环（新增：同上，供各组件统一引用） */
-  --ring-width: 2px;
-  --ring-offset: 1px;
+  /*
+   * 焦点环不做 token：宽度与偏移是可达性常量，不随主题变化，
+   * 组件里直接写 ring-2 / ring-offset-1。Tailwind v4 的 ring-2 是硬编码 2px，
+   * 即使留了变量也读不到，留着只会误导后人。
+   */
 }
 
 .dark {
@@ -111,5 +114,6 @@
   --color-info-soft: #172c4a;
 
   --shadow-card: 0 1px 2px rgb(0 0 0 / 30%), 0 6px 18px rgb(0 0 0 / 18%);
+  --shadow-card-hover: 0 2px 6px rgb(0 0 0 / 38%), 0 14px 32px rgb(0 0 0 / 26%);
   --shadow-dialog: 0 18px 48px rgb(0 0 0 / 55%);
 }

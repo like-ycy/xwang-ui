@@ -1,12 +1,19 @@
 import * as React from "react"
 import { cn } from "../../lib/utils"
 
-function Card({ className, ...props }: React.ComponentProps<"div">) {
+function Card({
+  className,
+  interactive = false,
+  ...props
+}: React.ComponentProps<"div"> & { interactive?: boolean }) {
   return (
     <div
       data-slot="card"
+      data-interactive={interactive || undefined}
       className={cn(
         "rounded-card border border-border bg-surface p-4 text-foreground shadow-card",
+        interactive &&
+          "cursor-pointer transition-[border-color,box-shadow,translate] duration-base ease-standard hover:-translate-y-0.5 hover:border-primary/40 hover:shadow-card-hover",
         className
       )}
       {...props}

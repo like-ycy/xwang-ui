@@ -42,7 +42,7 @@ function DialogContent({
       >
         {children}
         {showClose && (
-          <DialogPrimitive.Close className="absolute top-4 right-4 rounded-control p-1 text-faint opacity-70 transition-opacity hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55">
+          <DialogPrimitive.Close className="absolute top-4 right-4 rounded-control p-1 text-faint opacity-70 transition-opacity duration-base ease-standard hover:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/55">
             <X className="size-4" />
             <span className="sr-only">关闭</span>
           </DialogPrimitive.Close>

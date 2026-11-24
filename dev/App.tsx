@@ -233,7 +233,7 @@ export function App() {
           </div>
         </Section>
 
-        <Section title="Button" note="5 种 variant × 4 种 size。这一版 hover/active 只换颜色，没有位移与阴影反馈。">
+        <Section title="Button" note="5 种 variant × 4 种 size。主按钮 hover 加阴影、按下下沉 1px；其余变体只统一时长，避免工具栏抖动。">
           <div className="panel">
             <p className="panel-label">variant</p>
             <div className="row">
@@ -356,7 +356,7 @@ export function App() {
           </div>
         </Section>
 
-        <Section title="浮层" note="Dialog / Popover / Dropdown。注意弹窗目前没有淡入淡出，原因见文末。">
+        <Section title="浮层" note="Dialog / Popover / Dropdown 统一 fade + zoom（tw-animate-css），关闭时反向播放，Radix 会延迟卸载等动画播完。">
           <div className="panel">
             <div className="row">
               <Dialog>
@@ -400,13 +400,13 @@ export function App() {
           </div>
         </Section>
 
-        <Section title="Card">
+        <Section title="Card" note="默认不动（静态容器大量使用）；只有 interactive 的卡片才会 hover 抬升。">
           <div className="grid cols-2">
             <Card>
               <CardHeader>
                 <CardTitle>卡片标题</CardTitle>
               </CardHeader>
-              <CardDescription>描述文字，使用 faint 色，14px。</CardDescription>
+              <CardDescription>静态卡片，鼠标划过没有反应，用于表单区、详情面板。</CardDescription>
               <CardContent>
                 <Progress value={62} />
               </CardContent>
@@ -415,13 +415,16 @@ export function App() {
                 <Button size="sm">查看</Button>
               </CardFooter>
             </Card>
-            <Card>
+            <Card interactive>
               <CardHeader>
-                <CardTitle>无描述卡片</CardTitle>
+                <CardTitle>可交互卡片</CardTitle>
               </CardHeader>
+              <CardDescription>
+                传了 <code>interactive</code>：hover 抬升 2px、阴影加深、边框转主色，180ms 缓出。
+              </CardDescription>
               <CardContent>
                 <p style={{ margin: 0, fontSize: 13, color: "var(--color-muted)" }}>
-                  仅内容区，用来比较有描述与无描述时的垂直节奏是否一致。
+                  用于可以点开进入下一层的列表项。两套卡片的内部节奏保持一致。
                 </p>
               </CardContent>
             </Card>
@@ -446,16 +449,44 @@ export function App() {
           </div>
         </Section>
 
-        <Section title="留给下一步精修" note="这些是视觉决策，不是拆分遗留的 bug，等你定了方向再动。">
+        <Section title="本轮完成的动效与状态反馈" note="动效 token 从「定义了没人用」变成组件统一引用，改一处全体生效。">
           <div className="panel">
             <ul className="issues">
               <li>
-                Dialog 遮罩上的 <code>animate-in</code> / <code>fade-in-0</code> 没有对应插件（未安装 tw-animate-css），
-                构建产物里 0 条匹配 —— 弹窗是硬切出现的。
+                浮层动画真正生效：装了 <code>tw-animate-css</code>，Dialog / Popover / Dropdown（含子菜单）
+                统一 fade + zoom，关闭时反向播放。
               </li>
-              <li>Button 的 hover/active 只改背景色，没有位移或阴影变化，点下去缺少反馈。</li>
-              <li>Card 只有一档阴影，列表场景没有 hover 抬升。</li>
-              <li>数字没有 tabular-nums，表格与进度数值会横向跳动。</li>
+              <li>
+                <code>--duration-*</code> 经 <code>--transition-duration-*</code> 命名空间接进 Tailwind，
+                组件里可以写 <code>duration-base ease-standard</code>；<code>--ease-out</code> 刻意不映射，避免改掉内置行为。
+              </li>
+              <li>
+                Button 主按钮补 hover 阴影与按下 1px 下沉；Input / Select 的聚焦环改成 180ms 渐显，不再硬跳。
+              </li>
+              <li>
+                Card 新增 <code>interactive</code> 变体（默认不动），配套新增 <code>--shadow-card-hover</code>。
+              </li>
+              <li>
+                表格默认 <code>tabular-nums</code>，<code>--ring-width</code> / <code>--ring-offset</code>
+                这两个没人引用的半成品 token 已删除。
+              </li>
+            </ul>
+          </div>
+        </Section>
+
+        <Section title="留给下一步" note="这些不阻塞手感统一，属于清理与迁移。">
+          <div className="panel">
+            <ul className="issues">
+              <li>
+                <code>SelectContent</code> 的下拉还没有动画，本轮只覆盖了 Dialog / Popover / Dropdown。
+              </li>
+              <li>
+                video_library 的 <code>.video-card:hover</code> 仍自己实现抬升，与 <code>interactive</code> 两套并存，
+                待单独一轮迁移。
+              </li>
+              <li>
+                video_library 的兼容别名层还有约 212 处引用，按页面分批替换后整块删除。
+              </li>
             </ul>
           </div>
         </Section>

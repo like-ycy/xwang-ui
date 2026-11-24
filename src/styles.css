@@ -57,6 +57,20 @@
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+
+  /*
+   * 动效：duration 必须走 --transition-duration-* 命名空间，
+   * 写成 --duration-* 不会生成任何工具类（实测见附录 A）。
+   */
+  --transition-duration-fast: var(--duration-fast);
+  --transition-duration-base: var(--duration-base);
+  --transition-duration-slow: var(--duration-slow);
+
+  /* ease 直接映射，ease-standard 生成 .ease-standard。
+     不映射 --ease-out：会覆盖 Tailwind 内置的 ease-out，连带改变存量行为。 */
+  --ease-standard: var(--ease-standard);
+
+  --shadow-card-hover: var(--shadow-card-hover);
 }
 
 @layer components {
